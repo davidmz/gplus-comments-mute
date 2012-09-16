@@ -1,6 +1,6 @@
 {
     "name":"Скрытие комментариев в G+",
-    "version":"1.0",
+    "version":"1.1",
     "description":"Возможность скрыть комментарии к любому аккаунту в G+",
     "icons":{
         "128":"img/icon-128.png"
@@ -23,6 +23,7 @@
             "background.js"
         ]
     },
+    "options_page": "settings.html",
     "web_accessible_resources":[
         "img/Speaker_Icon.svg",
         "img/Mute_Icon.svg",
