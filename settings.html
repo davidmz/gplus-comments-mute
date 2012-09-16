@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Настройки</title>
+    <link rel="stylesheet" href="settings.css">
+    <script src="common.js"></script>
+    <script src="jst.js"></script>
+    <script src="settings.js"></script>
+</head>
+<body>
+    <h1>Настройки</h1>
+    <p>
+        <label>
+            <input type="checkbox" id="comments-on-post">
+            — показывать комментарии на странице самой записи
+        </label>
+    </p>
+    <div id="mute-block">
+        <h2>Аккаунты со скрытыми комментариями</h2>
+        <p>
+            <button type="button" id="remove-oids">Удалить отмеченные</button>
+        </p>
+        <div id="mute-list"></div>
+    </div>
+
+    <div id="item_tmpl">
+        <div class="mute-item" data-jst-attr="data-oid:oid">
+            <input type="checkbox" data-jst-attr="value:oid">
+            <div class="photo"></div>
+            <div class="name"><a data-jst-attr="href:url" data-jst-text="name" target="_blank"></a></div>
+            <div class="desc" data-jst-text="desc"></div>
+        </div>
+    </div>
+</body>
+</html>

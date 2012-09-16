@@ -1,0 +1,31 @@
+{
+    "name":"Скрытие комментариев в G+",
+    "version":"1.0",
+    "description":"Возможность скрыть комментарии к любому аккаунту в G+",
+
+    "manifest_version":2,
+    "content_scripts":[
+        {
+            "matches":["https://plus.google.com/*"],
+            "js":[
+                "common.js",
+                "content-script.js"
+            ],
+            "css":["content.css"]
+        }
+    ],
+    "background":{
+        "scripts":[
+            "common.js",
+            "background.js"
+        ]
+    },
+    "web_accessible_resources":[
+        "img/Speaker_Icon.svg",
+        "img/Mute_Icon.svg",
+        "img/Settings_Icon.svg"
+    ],
+    "permissions":[
+        "https://plus.google.com/"
+    ]
+}
