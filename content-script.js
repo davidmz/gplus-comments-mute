@@ -26,7 +26,6 @@
     };
 
     document.body.addEventListener("click", function(e) {
-        console.log(e);
         if (e.target.className == "mute-btn") {
             openDialog.apply(e.target.muteData);
         }
