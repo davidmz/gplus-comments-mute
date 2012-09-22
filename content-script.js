@@ -46,7 +46,7 @@
          * @type {Node}
          */
         var photoLayer = document.querySelector("body > .gQ .aT.c-B:not(.comKill)");
-        if (photoLayer) {
+        if (photoLayer && photoLayer.querySelector(".Sg.Ob")) {
             photoLayer.className += " comKill";
             oid = photoLayer.querySelector(".Sg.Ob").getAttribute("oid");
             if (config.muteList.indexOf(oid) >= 0) {
