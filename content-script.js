@@ -13,7 +13,7 @@
      * Всё с чистого листа
      */
     var clearAll = function() {
-        var records = document.querySelectorAll(".Tg.Sb.comKill");
+        var records = document.querySelectorAll(".comKill");
         for (var i = 0; i < records.length; i++) {
             records[i].className = records[i].className.replace(/ comKill( mute)?/, "");
         }
@@ -21,8 +21,6 @@
         for (i = 0; i < buttons.length; i++) {
             buttons[i].parentNode.removeChild(buttons[i]);
         }
-        var photoLayer = document.querySelector("body > .gQ  .aT.c-B.comKill");
-        if (photoLayer) photoLayer.className.replace(/ comKill/, "");
     };
 
     document.body.addEventListener("click", function(e) {
@@ -43,28 +41,31 @@
 
         /**
          * Комментарии к фото скрываем всегда (потому что их можно развернуть)
-         * @type {Node}
+         * @type {HTMLElement}
          */
         var photoLayer = document.querySelector("body > .gQ .aT.c-B:not(.comKill)");
-        if (photoLayer && photoLayer.querySelector(".Sg.Ob")) {
-            photoLayer.className += " comKill";
-            oid = photoLayer.querySelector(".Sg.Ob").getAttribute("oid");
-            if (config.muteList.indexOf(oid) >= 0) {
-                var commentsLink = photoLayer.querySelector(".tJ.a-n.tca");
-                commentsLink.className = commentsLink.className.replace("tca", "bka");
-                var els = photoLayer.querySelectorAll(".CO");
-                for (var j = 0; j < els.length; j++) els[j].style.display = "none"
+        if (photoLayer) {
+            var tLink = photoLayer.querySelector(".Sg.Ob");
+            if (tLink) {
+                photoLayer.className += " comKill";
+                oid = tLink.getAttribute("oid");
+                if (config.muteList.indexOf(oid) >= 0) {
+                    photoLayer.className += " mute";
+                }
             }
         }
 
 
         var records = document.querySelectorAll(".Tg.Sb:not(.comKill)");
-        for (var i = 0; i < records.length; i++) {
+        for (var i = 0, l = records.length; i < l; i++) {
             var titleLink = records[i].querySelector(".Sg.Ob.Tc");
             if (!titleLink) continue; // могут быть не-записи, без авторов
 
-            var uPic = records[i].querySelector(".Ol.Rf.Ep").getAttribute("src");
-            uPic = uPic.replace("/s48-", "/s90-");
+            var uPicEl = records[i].querySelector(".Ol.Ep");
+            if (!uPicEl) continue;
+
+            var uPic = uPicEl.getAttribute("src");
+            uPic = uPic.replace(/\/s\d+-/, "/s90-");
 
             oid = titleLink.getAttribute("oid");
             var title = titleLink.firstChild.nodeValue;
@@ -72,7 +73,9 @@
             records[i].className += " comKill";
             //noinspection JSValidateTypes
             var mute = (config.muteList.indexOf(oid) >= 0);
-            if (mute) records[i].className += " mute";
+            if (mute) {
+                records[i].className += " mute";
+            }
             var btn = document.createElement("div");
             btn.className = "mute-btn";
             btn.muteData = {
@@ -90,10 +93,8 @@
             );
         }
     };
-    (function() {
-        update();
-        setTimeout(arguments.callee, 1000);
-    })();
+
+    setInterval(update, 1000);
 
     var openDialog = function() {
         var html = '<div class="comKill-dialogShadow"><div class="comKill-dialogWin">' +
