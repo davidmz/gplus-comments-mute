@@ -43,9 +43,9 @@
          * Комментарии к фото скрываем всегда (потому что их можно развернуть)
          * @type {HTMLElement}
          */
-        var photoLayer = document.querySelector("body > .gQ .aT.c-B:not(.comKill)");
+        var photoLayer = document.querySelector("body > .pg.mab:not(.comKill)");
         if (photoLayer) {
-            var tLink = photoLayer.querySelector(".Sg.Ob");
+            var tLink = photoLayer.querySelector(".tv.Ub");
             if (tLink) {
                 photoLayer.className += " comKill";
                 oid = tLink.getAttribute("oid");
@@ -56,12 +56,12 @@
         }
 
 
-        var records = document.querySelectorAll(".Tg.Sb:not(.comKill)");
+        var records = document.querySelectorAll(".Yp.Xa:not(.comKill)");
         for (var i = 0, l = records.length; i < l; i++) {
-            var titleLink = records[i].querySelector(".Sg.Ob.Tc");
+            var titleLink = records[i].querySelector(".tv.Ub.Hf");
             if (!titleLink) continue; // могут быть не-записи, без авторов
 
-            var uPicEl = records[i].querySelector(".Ol.Ep");
+            var uPicEl = records[i].querySelector(".Uk.wi.hE");
             if (!uPicEl) continue;
 
             var uPic = uPicEl.getAttribute("src");
@@ -89,7 +89,7 @@
                     "title",
                     mute ?
                             ("Показывать комментарии к записям '" + title + "'") :
-                            ("Скрывать комментарии к записям'" + title + "'")
+                            ("Скрывать комментарии к записям '" + title + "'")
             );
         }
     };

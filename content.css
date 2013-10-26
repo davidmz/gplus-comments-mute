@@ -1,8 +1,16 @@
-.comKill.mute .Lj.FE {
+/* Комментарии к обычным записям */
+.comKill.mute .DM {
     display: none;
 }
 
-.comKill.mute .Se.Eu {
+/* Комментарии к болшьшим записям с картинкой */
+.comKill.mute .Cx.fr {
+    display: none;
+}
+
+/* Комментарии к раскрытой картинке */
+.comKill.mute .rzb,
+.comKill.mute .ftc {
     display: none;
 }
 
